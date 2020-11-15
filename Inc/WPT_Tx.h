@@ -47,6 +47,7 @@ struct WptTx_t
 	float 	 LoopCurr;
 	float 	 SwitchFreq;
 	float 	 LoopVolFactorSlope;		//线圈电压换算系数
+	float 	 LoopVolFactorInterrupt;		//线圈电流换算截距
 	float 	 LoopCurrFactorSlope;		//线圈电流换算系数
 	float 	 LoopCurrFactorInterrupt;		//线圈电流换算截距
 };

@@ -27,12 +27,13 @@ struct WptTx_t WptTx;
 
 void WPT_Tx_Init(void)
 {
-	WptTx.SwitchFreq = 25 * 1e3;
+	WptTx.SwitchFreq = 1 * 1e3;
 	
 	SetSwitchFreq(WptTx.SwitchFreq);
 	
 	/*计算系数, 以减少每周期运算量*/
 	WptTx.LoopVolFactorSlope = ADC_VREF /ADC_RESOLUTION * ((VOL_SAMPLING_RES_HS + VOL_SAMPLING_RES_LS) / VOL_SAMPLING_RES_LS);
+	WptTx.LoopVolFactorInterrupt = - (ADC_VREF / 2.f) * ((VOL_SAMPLING_RES_HS + VOL_SAMPLING_RES_LS) / VOL_SAMPLING_RES_LS);
 	WptTx.LoopCurrFactorSlope = ADC_VREF / ADC_RESOLUTION / CURR_SAMPLING_AMP_GAIN / CURR_SAMPLING_RES;
 	WptTx.LoopCurrFactorInterrupt = - ADC_VREF / CURR_SAMPLING_AMP_GAIN / CURR_SAMPLING_RES / 2.f;
 	
@@ -48,7 +49,7 @@ void WPT_Tx(void)
 
 void GetVolCurr(void)
 {
-	WptTx.LoopVol = WptTx.LoopVolFactorSlope*WptTx.ADC_Value[0];
+	WptTx.LoopVol = WptTx.LoopVolFactorSlope*WptTx.ADC_Value[0] + WptTx.LoopVolFactorInterrupt;
 	WptTx.LoopCurr = WptTx.LoopCurrFactorSlope*WptTx.ADC_Value[1] + WptTx.LoopCurrFactorInterrupt;
 }
 
