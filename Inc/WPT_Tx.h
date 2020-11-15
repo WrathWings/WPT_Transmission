@@ -22,7 +22,7 @@
 #include "util.h"
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
-#define		HRCK_FREQ					(1.36 * (float)1e9)	//Hz
+#define		HRCK_FREQ					(6.8 * (float)1e8)	//Hz
 #define		TIMCK_FREQ					(170 * (float)1e6)	//Hz
 #define		SAMPLING_FREQ				(200 * (float)1e3)	//Hz
 #define		SWITCH_PERIOD_S				(1.f / WptTx.SwitchFreq)	//s
@@ -48,6 +48,7 @@ struct WptTx_t
 	float 	 SwitchFreq;
 	float 	 LoopVolFactorSlope;		//线圈电压换算系数
 	float 	 LoopCurrFactorSlope;		//线圈电流换算系数
+	float 	 LoopCurrFactorInterrupt;		//线圈电流换算截距
 };
 
 /* USER CODE END PTD */

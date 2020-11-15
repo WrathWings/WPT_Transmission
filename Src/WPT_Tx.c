@@ -27,13 +27,14 @@ struct WptTx_t WptTx;
 
 void WPT_Tx_Init(void)
 {
-	WptTx.SwitchFreq = 27 * 1e3;
+	WptTx.SwitchFreq = 25 * 1e3;
 	
 	SetSwitchFreq(WptTx.SwitchFreq);
 	
 	/*计算系数, 以减少每周期运算量*/
 	WptTx.LoopVolFactorSlope = ADC_VREF /ADC_RESOLUTION * ((VOL_SAMPLING_RES_HS + VOL_SAMPLING_RES_LS) / VOL_SAMPLING_RES_LS);
 	WptTx.LoopCurrFactorSlope = ADC_VREF / ADC_RESOLUTION / CURR_SAMPLING_AMP_GAIN / CURR_SAMPLING_RES;
+	WptTx.LoopCurrFactorInterrupt = - ADC_VREF / CURR_SAMPLING_AMP_GAIN / CURR_SAMPLING_RES / 2.f;
 	
 	ADConvert_Enable();
 	HRTIM_PWM_Enable();
@@ -43,18 +44,22 @@ void WPT_Tx(void)
 {
 	/*计算输入输出电压*/
 	GetVolCurr();
-		
 } 
 
 void GetVolCurr(void)
 {
-	WptTx.LoopVol = WptTx.LoopVolFactorSlope * WptTx.ADC_Value[0];
-	WptTx.LoopCurr = WptTx.LoopCurrFactorSlope * WptTx.ADC_Value[1];
+	WptTx.LoopVol = WptTx.LoopVolFactorSlope*WptTx.ADC_Value[0];
+	WptTx.LoopCurr = WptTx.LoopCurrFactorSlope*WptTx.ADC_Value[1] + WptTx.LoopCurrFactorInterrupt;
 }
 
 void SetSwitchFreq(float exptFreq)
 {
-	__HAL_HRTIM_SETPERIOD(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, (uint16_t)(HRCK_FREQ/exptFreq));
+	int exptPeriod = HRCK_FREQ/exptFreq;
+	uint16_t exptCCR = exptPeriod/2;
+	
+	Saturation_int(&exptPeriod, 65527, 24);
+		
+	__HAL_HRTIM_SETPERIOD(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, (uint16_t)exptPeriod);
 	__HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, HRTIM_COMPAREUNIT_1, (uint16_t)(HRCK_FREQ/exptFreq/2.f));
 }
 
