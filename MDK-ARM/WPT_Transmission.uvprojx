@@ -10,15 +10,15 @@
       <TargetName>WPT_Transmission</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pArmCC>6110000::V6.11::.\ARMCLANG</pArmCC>
-      <pCCUsed>6110000::V6.11::.\ARMCLANG</pCCUsed>
+      <pArmCC>6100001::V6.10.1::.\ARMCLANG</pArmCC>
+      <pCCUsed>6100001::V6.10.1::.\ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
           <Device>STM32G474CEUx</Device>
           <Vendor>STMicroelectronics</Vendor>
-          <PackID>Keil.STM32G4xx_DFP.1.1.0</PackID>
-          <PackURL>http://www.keil.com/pack</PackURL>
+          <PackID>Keil.STM32G4xx_DFP.1.2.0</PackID>
+          <PackURL>http://www.keil.com/pack/</PackURL>
           <Cpu>IRAM(0x20000000-0x2001FFFF) IROM(0x8000000-0x807FFFF)  CLOCK(8000000) FPU2 CPUTYPE("Cortex-M4")</Cpu>
           <FlashUtilSpec></FlashUtilSpec>
           <StartupFile></StartupFile>

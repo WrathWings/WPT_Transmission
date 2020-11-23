@@ -240,7 +240,7 @@ void TIM1_UP_TIM16_IRQHandler(void)
 	if(__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_UPDATE))
 	{
 		GetVolCurr();
-		UART_Transmit_DMA("%d\t%d\r\n",(int)(WptTx.LoopVol * 1e3), (int)(WptTx.LoopCurr * 1e3));
+//		UART_Transmit_DMA("%d\t%d\r\n",(int)(WptTx.LoopVol * 1e3), (int)(WptTx.LoopCurr * 1e3));
 		
 		__HAL_TIM_CLEAR_IT(&htim1, TIM_FLAG_UPDATE);
 	}

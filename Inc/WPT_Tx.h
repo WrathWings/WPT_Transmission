@@ -19,6 +19,7 @@
 #include "main.h"
 #include "adc.h"
 #include "hrtim.h"
+#include "usart.h"
 #include "util.h"
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */

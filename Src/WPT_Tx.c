@@ -27,7 +27,7 @@ struct WptTx_t WptTx;
 
 void WPT_Tx_Init(void)
 {
-	WptTx.SwitchFreq = 1 * 1e3;
+	WptTx.SwitchFreq = 25 * 1e3;
 	
 	SetSwitchFreq(WptTx.SwitchFreq);
 	
@@ -55,13 +55,15 @@ void GetVolCurr(void)
 
 void SetSwitchFreq(float exptFreq)
 {
-	int exptPeriod = HRCK_FREQ/exptFreq;
-	uint16_t exptCCR = exptPeriod/2;
+	int exptPeriod = 0;
+	uint16_t exptCCR = 0;
 	
+	exptPeriod = HRCK_FREQ/exptFreq;
 	Saturation_int(&exptPeriod, 65527, 24);
-		
+	exptCCR = exptPeriod/2;
+	
 	__HAL_HRTIM_SETPERIOD(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, (uint16_t)exptPeriod);
-	__HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, HRTIM_COMPAREUNIT_1, (uint16_t)(HRCK_FREQ/exptFreq/2.f));
+	__HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, HRTIM_COMPAREUNIT_1, exptCCR);
 }
 
 void ADConvert_Enable(void)
