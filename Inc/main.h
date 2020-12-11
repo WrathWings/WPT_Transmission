@@ -58,10 +58,14 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define PHASE_VOL_SW_Pin GPIO_PIN_0
+#define PHASE_VOL_SW_GPIO_Port GPIOA
+#define PHASE_CURR_TX_Pin GPIO_PIN_1
+#define PHASE_CURR_TX_GPIO_Port GPIOA
 #define SA_LOOP_VOL_Pin GPIO_PIN_8
 #define SA_LOOP_VOL_GPIO_Port GPIOA
-#define SA_LOOP_CURR_Pin GPIO_PIN_9
-#define SA_LOOP_CURR_GPIO_Port GPIOA
+#define SA_CURR_TX_Pin GPIO_PIN_9
+#define SA_CURR_TX_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */
