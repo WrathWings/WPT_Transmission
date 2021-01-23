@@ -10,8 +10,8 @@
       <TargetName>WPT_Transmission</TargetName>
       <ToolsetNumber>0x4</ToolsetNumber>
       <ToolsetName>ARM-ADS</ToolsetName>
-      <pArmCC>6100001::V6.10.1::.\ARMCLANG</pArmCC>
-      <pCCUsed>6100001::V6.10.1::.\ARMCLANG</pCCUsed>
+      <pArmCC>6110000::V6.11::.\ARMCLANG</pArmCC>
+      <pCCUsed>6110000::V6.11::.\ARMCLANG</pCCUsed>
       <uAC6>1</uAC6>
       <TargetOption>
         <TargetCommonOption>
@@ -339,7 +339,7 @@
               <MiscControls></MiscControls>
               <Define>USE_HAL_DRIVER,STM32G474xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;                     ../Drivers/STM32G4xx_HAL_Driver/Inc;                     ../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy;                     ../Drivers/CMSIS/Device/ST/STM32G4xx/Include;                     ../Drivers/CMSIS/Include</IncludePath>
+              <IncludePath>../Inc;                        ../Drivers/STM32G4xx_HAL_Driver/Inc;                        ../Drivers/STM32G4xx_HAL_Driver/Inc/Legacy;                        ../Drivers/CMSIS/Device/ST/STM32G4xx/Include;                        ../Drivers/CMSIS/Include</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -459,11 +459,6 @@
           <GroupName>Drivers/STM32G4xx_HAL_Driver</GroupName>
           <Files>
             <File>
-              <FileName>stm32g4xx_hal_gpio.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c</FilePath>
-            </File>
-            <File>
               <FileName>stm32g4xx_hal_adc.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_adc.c</FilePath>
@@ -507,6 +502,11 @@
               <FileName>stm32g4xx_hal_flash_ramfunc.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_flash_ramfunc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32g4xx_hal_gpio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32G4xx_HAL_Driver/Src/stm32g4xx_hal_gpio.c</FilePath>
             </File>
             <File>
               <FileName>stm32g4xx_hal_exti.c</FileName>

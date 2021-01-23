@@ -28,8 +28,10 @@ struct WptTx_t WptTx;
 void WPT_Tx_Init(void)
 {
 	WptTx.SwitchFreq = 25 * 1e3;
+	WptTx.CapDuty = 0.2;
 	
 	SetSwitchFreq(WptTx.SwitchFreq);
+	SetCapDuty(WptTx.CapDuty);
 	
 	/*计算系数, 以减少每周期运算量*/
 	WptTx.LoopVolFactorSlope = ADC_VREF /ADC_RESOLUTION * ((VOL_SAMPLING_RES_HS + VOL_SAMPLING_RES_LS) / VOL_SAMPLING_RES_LS);
@@ -55,15 +57,34 @@ void GetVolCurr(void)
 
 void SetSwitchFreq(float exptFreq)
 {
-	int exptPeriod = 0;
+	int exptPeriod = 0;		//此变量不可为无符号型
 	uint16_t exptCCR = 0;
 	
 	exptPeriod = HRCK_FREQ/exptFreq;
 	Saturation_int(&exptPeriod, 65527, 24);
 	exptCCR = exptPeriod/2;
 	
+	/*设定逆变器开关频率*/
 	__HAL_HRTIM_SETPERIOD(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, (uint16_t)exptPeriod);
 	__HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_C, HRTIM_COMPAREUNIT_1, exptCCR);
+	
+	/*设定可控电容开关频率*/
+	__HAL_HRTIM_SETPERIOD(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, (uint16_t)exptPeriod);
+}
+
+void SetCapDuty(float duty)
+{
+	int presentPeriod = 0;
+	uint16_t exptCCR = 0;
+	
+	/*获取当前周期*/
+	presentPeriod = __HAL_HRTIM_GETPERIOD(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D);
+	
+	Saturation_float(&duty, 1.f, 0.f);
+	
+	/*设定CCR值*/
+	exptCCR = (uint16_t)(duty*presentPeriod);
+	__HAL_HRTIM_SETCOMPARE(&hhrtim1, HRTIM_TIMERINDEX_TIMER_D, HRTIM_COMPAREUNIT_1, exptCCR);
 }
 
 void ADConvert_Enable(void)

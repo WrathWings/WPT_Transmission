@@ -25,7 +25,8 @@
 /* USER CODE BEGIN PD */
 #define		HRCK_FREQ					(6.8 * (float)1e8)	//Hz
 #define		TIMCK_FREQ					(170 * (float)1e6)	//Hz
-#define		SAMPLING_FREQ				(200 * (float)1e3)	//Hz
+#define		SAMPLING_FREQ				(25 * (float)1e3)	//Hz
+#define		DEFAULT_SWITCH_FREQ			(25 * (float)1e3)	//Hz
 #define		SWITCH_PERIOD_S				(1.f / WptTx.SwitchFreq)	//s
 #define 	SWITCH_PERIOD_US			(SYSTEM_PERIOD_S * (float)1e6)	//us
 
@@ -47,6 +48,7 @@ struct WptTx_t
 	float 	 LoopVol;
 	float 	 LoopCurr;
 	float 	 SwitchFreq;
+	float 	 CapDuty;
 	float 	 LoopVolFactorSlope;		//线圈电压换算系数
 	float 	 LoopVolFactorInterrupt;		//线圈电流换算截距
 	float 	 LoopCurrFactorSlope;		//线圈电流换算系数
@@ -64,6 +66,7 @@ void GetVolCurr(void);
 void VinAverageFilter(void);
 void VoutAverageFilter(void);
 void SetSwitchFreq(float exptFreq);
+void SetCapDuty(float duty);
 void ADConvert_Enable(void);
 void HRTIM_PWM_Enable(void);
 /* USER CODE END Prototypes */

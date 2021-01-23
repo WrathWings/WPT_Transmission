@@ -22,6 +22,7 @@
 #include "adc.h"
 #include "dma.h"
 #include "hrtim.h"
+#include "hrtim.h"
 #include "tim.h"
 #include "usart.h"
 #include "gpio.h"
