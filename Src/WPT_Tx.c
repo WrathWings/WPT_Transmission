@@ -28,7 +28,7 @@ struct WptTx_t WptTx;
 void WPT_Tx_Init(void)
 {
 	WptTx.SwitchFreq = 25 * 1e3;
-	WptTx.CapDuty = 0.2;
+	WptTx.CapDuty = 0.5;
 	
 	SetSwitchFreq(WptTx.SwitchFreq);
 	SetCapDuty(WptTx.CapDuty);
@@ -57,11 +57,11 @@ void GetVolCurr(void)
 
 void SetSwitchFreq(float exptFreq)
 {
-	int exptPeriod = 0;		//此变量不可为无符号型
+	uint16_t exptPeriod = 0;		
 	uint16_t exptCCR = 0;
 	
 	exptPeriod = HRCK_FREQ/exptFreq;
-	Saturation_int(&exptPeriod, 65527, 24);
+	Saturation_uint16(&exptPeriod, 65527, 24);
 	exptCCR = exptPeriod/2;
 	
 	/*设定逆变器开关频率*/
@@ -74,7 +74,7 @@ void SetSwitchFreq(float exptFreq)
 
 void SetCapDuty(float duty)
 {
-	int presentPeriod = 0;
+	uint16_t presentPeriod = 0;
 	uint16_t exptCCR = 0;
 	
 	/*获取当前周期*/
@@ -101,7 +101,11 @@ void HRTIM_PWM_Enable(void)
 {
 	__HAL_HRTIM_ENABLE(&hhrtim1, HRTIM_TIMERID_TIMER_C);
 	HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TC1 | HRTIM_OUTPUT_TC2);
-	HAL_HRTIM_WaveformCounterStart(&hhrtim1, HRTIM_TIMERID_TIMER_C);
+	
+	__HAL_HRTIM_ENABLE(&hhrtim1, HRTIM_TIMERID_TIMER_D);
+	HAL_HRTIM_WaveformOutputStart(&hhrtim1, HRTIM_OUTPUT_TD1);
+
+	HAL_HRTIM_WaveformCountStart(&hhrtim1, HRTIM_TIMERID_TIMER_C | HRTIM_TIMERID_TIMER_D);	//同时启动TimerC和TimerD的计时器, 以尽可能使二者同步
 }
 
 /* USER CODE END */

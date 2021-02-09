@@ -16,6 +16,7 @@
 #define __UTIL_H
 
 /* Includes ------------------------------------------------------------------*/
+#include "main.h"
 #include "math.h"
 
 /* Private define ------------------------------------------------------------*/
@@ -41,6 +42,7 @@
 
 void Saturation_float(float *value, float upLimit, float downLimit);
 void Saturation_int(int *value, int upLimit, int downLimit);
+void Saturation_uint16(uint16_t *value, uint16_t upLimit, uint16_t downLimit);
 
 /* USER CODE END Prototypes */
 

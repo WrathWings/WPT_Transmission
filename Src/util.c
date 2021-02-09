@@ -47,6 +47,18 @@ void Saturation_int(int *value, int upLimit, int downLimit)
 	}
 }
 
+void Saturation_uint16(uint16_t *value, uint16_t upLimit, uint16_t downLimit)
+{	
+	if(*value >= upLimit)
+	{
+		*value	= upLimit;
+	}
+	else if(*value <= downLimit)
+	{
+		*value = downLimit;
+	}
+}
+
 /* USER CODE END */
 
 

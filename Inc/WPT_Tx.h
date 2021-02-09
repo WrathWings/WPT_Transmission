@@ -25,7 +25,7 @@
 /* USER CODE BEGIN PD */
 #define		HRCK_FREQ					(6.8 * (float)1e8)	//Hz
 #define		TIMCK_FREQ					(170 * (float)1e6)	//Hz
-#define		SAMPLING_FREQ				(25 * (float)1e3)	//Hz
+#define		SAMPLING_FREQ				(WptTx.SwitchFreq)	//Hz
 #define		DEFAULT_SWITCH_FREQ			(25 * (float)1e3)	//Hz
 #define		SWITCH_PERIOD_S				(1.f / WptTx.SwitchFreq)	//s
 #define 	SWITCH_PERIOD_US			(SYSTEM_PERIOD_S * (float)1e6)	//us
