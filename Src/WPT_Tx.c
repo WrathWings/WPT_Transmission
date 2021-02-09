@@ -28,7 +28,7 @@ struct WptTx_t WptTx;
 void WPT_Tx_Init(void)
 {
 	WptTx.SwitchFreq = 25 * 1e3;
-	WptTx.CapDuty = 0.5;
+	WptTx.CapDuty = 0.f;
 	
 	SetSwitchFreq(WptTx.SwitchFreq);
 	SetCapDuty(WptTx.CapDuty);
@@ -51,7 +51,7 @@ void WPT_Tx(void)
 
 void GetVolCurr(void)
 {
-	WptTx.LoopVol = WptTx.LoopVolFactorSlope*WptTx.ADC_Value[0] + WptTx.LoopVolFactorInterrupt;
+//	WptTx.LoopVol = WptTx.LoopVolFactorSlope*WptTx.ADC_Value[0] + WptTx.LoopVolFactorInterrupt;
 	WptTx.LoopCurr = WptTx.LoopCurrFactorSlope*WptTx.ADC_Value[1] + WptTx.LoopCurrFactorInterrupt;
 }
 

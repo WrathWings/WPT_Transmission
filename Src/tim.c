@@ -213,6 +213,9 @@ void TIM_Enable(void)
 {
 	__HAL_TIM_ENABLE_IT(&htim1, TIM_IT_UPDATE);
 	__HAL_TIM_ENABLE(&htim1);
+	__HAL_TIM_URS_ENABLE(&htim2);
+	__HAL_TIM_ENABLE(&htim2);
+	HAL_TIM_IC_Start(&htim2, TIM_CHANNEL_2);
 }
 /* USER CODE END 1 */
 
