@@ -55,6 +55,11 @@ void GetVolCurr(void)
 	WptTx.LoopCurr = WptTx.LoopCurrFactorSlope*WptTx.ADC_Value[1] + WptTx.LoopCurrFactorInterrupt;
 }
 
+void GetPhaseDiff(void)
+{
+	WptTx.PhaseDiff = 360.f * (htim2.Instance->CCR2)/TIMCK_FREQ/SWITCH_PERIOD_S;
+}
+
 void SetSwitchFreq(float exptFreq)
 {
 	uint16_t exptPeriod = 0;		

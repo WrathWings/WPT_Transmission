@@ -241,6 +241,7 @@ void TIM1_UP_TIM16_IRQHandler(void)
 	if(__HAL_TIM_GET_FLAG(&htim1, TIM_FLAG_UPDATE))
 	{
 		GetVolCurr();
+		GetPhaseDiff();
 		UART_Transmit_DMA("%d\r\n", (int)(htim2.Instance->CCR2));
 		
 		__HAL_TIM_CLEAR_IT(&htim1, TIM_FLAG_UPDATE);

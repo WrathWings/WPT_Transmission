@@ -36,8 +36,8 @@ wpt_transmission/dma.o: ..\Src\dma.c ..\Inc\dma.h ..\Inc\main.h \
   ..\Drivers\STM32G4xx_HAL_Driver\Inc\stm32g4xx_hal_tim_ex.h \
   ..\Drivers\STM32G4xx_HAL_Driver\Inc\stm32g4xx_hal_uart.h \
   ..\Drivers\STM32G4xx_HAL_Driver\Inc\stm32g4xx_hal_uart_ex.h \
-  ..\Inc\WPT_Tx.h ..\Inc\adc.h ..\Inc\hrtim.h ..\Inc\usart.h \
-  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
+  ..\Inc\WPT_Tx.h ..\Inc\tim.h ..\Inc\adc.h ..\Inc\hrtim.h \
+  ..\Inc\usart.h D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdlib.h \

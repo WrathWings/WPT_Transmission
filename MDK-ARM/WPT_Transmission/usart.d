@@ -36,8 +36,9 @@ wpt_transmission/usart.o: ..\Src\usart.c ..\Inc\usart.h ..\Inc\main.h \
   ..\Drivers\STM32G4xx_HAL_Driver\Inc\stm32g4xx_hal_tim_ex.h \
   ..\Drivers\STM32G4xx_HAL_Driver\Inc\stm32g4xx_hal_uart.h \
   ..\Drivers\STM32G4xx_HAL_Driver\Inc\stm32g4xx_hal_uart_ex.h \
-  ..\Inc\WPT_Tx.h ..\Inc\adc.h ..\Inc\hrtim.h ..\Inc\usart.h \
-  ..\Inc\util.h D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h \
+  ..\Inc\WPT_Tx.h ..\Inc\tim.h ..\Inc\adc.h ..\Inc\hrtim.h \
+  ..\Inc\usart.h ..\Inc\util.h \
+  D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\math.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdarg.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\string.h \
   D:\Keil_v5\ARM\ARMCLANG\Bin\..\include\stdio.h \

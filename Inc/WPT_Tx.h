@@ -17,6 +17,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include "tim.h"
 #include "adc.h"
 #include "hrtim.h"
 #include "usart.h"
@@ -53,6 +54,7 @@ struct WptTx_t
 	float 	 LoopVolFactorInterrupt;		//线圈电流换算截距
 	float 	 LoopCurrFactorSlope;		//线圈电流换算系数
 	float 	 LoopCurrFactorInterrupt;		//线圈电流换算截距
+	float	 PhaseDiff;					//输入电压与输入电流相位差
 };
 
 /* USER CODE END PTD */
@@ -63,6 +65,7 @@ void WPT_Tx_Init(void);
 void WPT_Tx(void);
 void ErrorAmplifier(void);
 void GetVolCurr(void);
+void GetPhaseDiff(void);
 void VinAverageFilter(void);
 void VoutAverageFilter(void);
 void SetSwitchFreq(float exptFreq);
