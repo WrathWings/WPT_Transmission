@@ -62,8 +62,8 @@ void Error_Handler(void);
 #define PHASE_VOL_SW_GPIO_Port GPIOA
 #define PHASE_CURR_TX_Pin GPIO_PIN_1
 #define PHASE_CURR_TX_GPIO_Port GPIOA
-#define SCC_DUTY_Pin GPIO_PIN_14
-#define SCC_DUTY_GPIO_Port GPIOB
+#define Cx_SCC_DUTY_Pin GPIO_PIN_14
+#define Cx_SCC_DUTY_GPIO_Port GPIOB
 #define SA_LOOP_VOL_Pin GPIO_PIN_8
 #define SA_LOOP_VOL_GPIO_Port GPIOA
 #define SA_CURR_TX_Pin GPIO_PIN_9

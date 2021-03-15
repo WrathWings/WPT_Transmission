@@ -195,7 +195,7 @@ void HAL_HRTIM_MspPostInit(HRTIM_HandleTypeDef* hrtimHandle)
     PB13     ------> HRTIM1_CHC2
     PB14     ------> HRTIM1_CHD1
     */
-    GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13|SCC_DUTY_Pin;
+    GPIO_InitStruct.Pin = GPIO_PIN_12|GPIO_PIN_13|Cx_SCC_DUTY_Pin;
     GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
     GPIO_InitStruct.Pull = GPIO_NOPULL;
     GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
